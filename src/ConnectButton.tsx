@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { useViewerConnection } from "@self.id/react";
 import { EthereumAuthProvider } from "@self.id/web";
 import { useEffect } from "react";
@@ -24,22 +25,29 @@ function ConnectButton({ setSelfID }) {
   }, [connection, setSelfID]);
 
   return connection.status === "connected" ? (
-    <button
-      onClick={() => {
-        disconnect();
-      }}
-    >
-      Disconnect
-    </button>
+    <div className="ConnectBtn">
+      <Button
+        size="large"
+        onClick={() => {
+          disconnect();
+        }}
+      >
+        Disconnect
+      </Button>
+    </div>
   ) : "ethereum" in window ? (
-    <button
-      disabled={connection.status === "connecting"}
-      onClick={() => {
-        createAuthProvider().then(connect);
-      }}
-    >
-      Connect
-    </button>
+    <div className="ConnectBtn">
+      <Button
+        size="large"
+        className="ConnectBtn"
+        disabled={connection.status === "connecting"}
+        onClick={() => {
+          createAuthProvider().then(connect);
+        }}
+      >
+        Connect
+      </Button>
+    </div>
   ) : (
     <p>
       An injected Ethereum provider such as{" "}
