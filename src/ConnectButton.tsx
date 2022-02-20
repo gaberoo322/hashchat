@@ -19,6 +19,7 @@ function ConnectButton({ setSelfID }) {
   useEffect(() => {
     if (connection.status === "connected") {
       setSelfID(connection.selfID);
+      console.log("connection.selfID", connection.selfID);
     }
   }, [connection, setSelfID]);
 
