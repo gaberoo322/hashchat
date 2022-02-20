@@ -1,5 +1,6 @@
 import { useViewerConnection } from "@self.id/react";
 import { EthereumAuthProvider } from "@self.id/web";
+import { useEffect } from "react";
 
 async function createAuthProvider() {
   // The following assumes there is an injected `window.ethereum` provider
@@ -12,9 +13,14 @@ async function createAuthProvider() {
 
 // A simple button to initiate the connection flow. A Provider must be present at a higher level
 // in the component tree for the `useViewerConnection()` hook to work.
-function ConnectButton() {
+function ConnectButton({ setSelfID }) {
   const [connection, connect, disconnect] = useViewerConnection();
-  console.log("connection", connection);
+
+  useEffect(() => {
+    if (connection.status === "connected") {
+      setSelfID(connection.selfID);
+    }
+  }, [connection, setSelfID]);
 
   return connection.status === "connected" ? (
     <button
