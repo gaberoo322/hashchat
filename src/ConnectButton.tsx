@@ -28,7 +28,7 @@ function ConnectButton({ setSelfID }) {
         disconnect();
       }}
     >
-      Disconnect ({connection.selfID.id})
+      Disconnect
     </button>
   ) : "ethereum" in window ? (
     <button
