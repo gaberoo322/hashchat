@@ -3,6 +3,7 @@ import "./App.css";
 import ConnectButton from "./ConnectButton";
 import ViewerRecord from "./ViewerRecord";
 import PublicRecord from "./PublicRecord";
+import Messages from "./Messages";
 
 function App() {
   const [selfID, setSelfID] = useState(null);
@@ -42,6 +43,9 @@ function App() {
           </section>
         )}
       </header>
+      <main>
+        <Messages />
+      </main>
     </div>
   );
 }
