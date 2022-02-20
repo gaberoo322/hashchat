@@ -1,5 +1,6 @@
 .App {
   background-color: #8db2c4;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +22,7 @@ h1 {
 
 .App-Section {
   height: 300px;
+  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

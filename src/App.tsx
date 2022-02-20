@@ -9,17 +9,13 @@ import { Button, TextField } from "@mui/material";
 function App() {
   const [selfID, setSelfID] = useState(null);
   const [friendsDID, setFriendsDID] = useState("");
+  const [showFriend, setShowFriend] = useState(false);
   const [selfDIDClient, setSelfDIDClient] = useState(null);
   const [selfCeramicClient, setSelfCeramicClient] = useState(null);
   const [message, setMessage] = useState("");
 
   const handleConnectFriend = (e) => {
-    if (e.target.value) {
-      // setFriendsDID(e.target.value);
-      setFriendsDID(
-        "did:3:bafyreicinidhfsmz47lyr7u5kplyzvdaczm54jxistzy5xg5fkfuw7drqq"
-      );
-    }
+    setShowFriend(true);
   };
 
   const handleSendMessage = (e) => {
@@ -57,15 +53,19 @@ function App() {
               variant="outlined"
               id="friendsDID"
               type="text"
+              onChange={(e) => setFriendsDID(e.target.value)}
               value={friendsDID}
             />
-            <Button variant="contained" onClick={handleConnectFriend}>
-              Connect Friend
+            <Button
+              variant="contained"
+              onClick={() => handleConnectFriend(friendsDID)}
+            >
+              Connect To Friend
             </Button>
           </>
         )}
       </section>
-      {friendsDID && (
+      {friendsDID && showFriend && (
         <>
           <section className="App-Section">
             <p>YOUR FRIENDS VIEW RECORD:</p>
